@@ -12,6 +12,8 @@ var sfx_correct = new Audio("sfx/ES_Correct.wav");
 var sfx_unlock = new Audio("sfx/ES_Unlock.wav");
 var sfx_enterNum = new Audio("sfx/ES_EnterNum.wav");
 var sfx_incorrect = new Audio("sfx/ES_Incorrect.wav");
+var sfx_submitHover  = new Audio("sfx/ES_ButtonHover.wav");
+var sfx_submitPush  = new Audio("sfx/ES_ButtonPush.wav");
 var element_ticVal = document.getElementsByClassName('ticket-val');
 var lock_status = document.getElementsByClassName('lock-status-panel');
 var minSlideVal = 35;
@@ -19,8 +21,14 @@ var maxSlideVal = 335;
 var curLock = 0;
 var correctPassword = [23, 65, 5, 89];
 var curCombo = [false,false,false,false];
+document.getElementsByClassName('submit-button')[0].onmouseover = submitHover;
+
+function submitHover(){
+    playProperly(sfx_submitHover);
+}
 
 function submitNum(){
+    playProperly(sfx_submitPush);
     if(!locked){
         console.log(parseInt(element_ticVal[0].innerText));
         if(parseInt(element_ticVal[0].innerText) == correctPassword[curLock]){
